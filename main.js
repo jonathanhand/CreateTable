@@ -1,4 +1,4 @@
-document.getElementById('revText').value=''
+//document.getElementById('revText').value=''
 const makeTableBtn = document.getElementById('makeTableBtn').addEventListener('click', function () {
     const revField = document.getElementById('revField');
     const tableField = document.getElementById('tableField');
