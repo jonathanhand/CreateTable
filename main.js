@@ -11,7 +11,12 @@ function createTable(rowData) {
   for (let row in rowData) {
 
     console.log(rowData[row])
+    //TODO: long part number overflows, causes only 1 space after part
+    //let columnTest = rowData[row].match(/([1-9])(\d{3,4})([a-z])(\d{1,3})/im)
+    // console.log(columnTest)
     let column = rowData[row].split(/\s\s+/g)
+    //console.log(rowData[row])
+    console.log(column)
     column.unshift(column[0][0])
     column[1] = String(column[1].match(/([1-9])(\d{3,4})([a-z])(\d{1,3})/gim))
     columnArray.push(column)
@@ -33,6 +38,7 @@ function createTable(rowData) {
     var tr = document.createElement('tr')
     console.log('row')
     for (let cell in columnArray[rowNum]) {
+      if (cell)
       if (cell == 0 || cell == 1 || cell == 2 || cell == 5) {
       var td= document.createElement('td')
       td.appendChild(document.createTextNode(columnArray[rowNum][cell]))
@@ -43,6 +49,7 @@ function createTable(rowData) {
     }
   }
   console.log(table)
+  console.log(document.getElementById('wholeTable'))
   document.getElementById('tableOutput').appendChild(table)
 }
 
