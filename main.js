@@ -1,4 +1,3 @@
-//document.getElementById('revText').value=''
 const makeTableBtn = document.getElementById('makeTableBtn').addEventListener('click', function () {
     const revField = document.getElementById('revField');
     const tableField = document.getElementById('tableField');
@@ -53,4 +52,3 @@ function parseRev (revVal) {
     let spaceList = revSpace.split(/\n/g)
     createTable(spaceList)
     }
-
