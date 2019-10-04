@@ -39,6 +39,8 @@ function createTable(rowData) {
     console.log('row')
     for (let cell in columnArray[rowNum]) {
       if (cell == 0 || cell == 1 || cell == 2 || cell == 5) {
+        console.log(String(columnArray[rowNum][2]).toLowerCase())
+        columnArray[rowNum][2] = String(columnArray[rowNum][2]).toLowerCase()
         var td= document.createElement('td')
         if (cell == 5) {
           let priceSplit = String(columnArray[rowNum][cell]).split(' ')
@@ -63,7 +65,7 @@ function createTable(rowData) {
   }
   console.log(table)
   console.log(document.getElementById('wholeTable'))
-  document.getElementById('tableOutput').appendChild(table)
+  // document.getElementById('tableOutput').appendChild(table)
 }
 
 function parseRev (revVal) {
