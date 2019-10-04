@@ -3,3 +3,6 @@ table, th, td {
    border-collapse: collapse;
    font-family: "arial";
 }
+body {
+  text-align:center;
+}
