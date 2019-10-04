@@ -41,6 +41,11 @@ function createTable(rowData) {
       if (cell == 0 || cell == 1 || cell == 2 || cell == 5) {
         console.log(String(columnArray[rowNum][2]).toLowerCase())
         columnArray[rowNum][2] = String(columnArray[rowNum][2]).toLowerCase()
+        columnArray[rowNum][2] = columnArray[rowNum][2].split(' ')
+        for (var i = 0; i<columnArray[rowNum][2].length; i++) {
+            columnArray[rowNum][2][i] = columnArray[rowNum][2][i].charAt(0).toUpperCase() + columnArray[rowNum][2][i].slice(1);
+        }
+        columnArray[rowNum][2] = columnArray[rowNum][2].join(' ')
         var td= document.createElement('td')
         if (cell == 5) {
           let priceSplit = String(columnArray[rowNum][cell]).split(' ')
