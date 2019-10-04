@@ -8,6 +8,7 @@ const makeTableBtn = document.getElementById('makeTableBtn').addEventListener('c
     parseRev(revField.value);
     const lineCheck = document.getElementById('lineCheck').checked;
     if (lineCheck == false) {
+        table.style.border = '1px solid black';
         document.getElementById('lineHeader').style.display = 'none'
         for (var i = 0, row; row = table.rows[i]; i++) {
             // console.log(row)
@@ -17,6 +18,23 @@ const makeTableBtn = document.getElementById('makeTableBtn').addEventListener('c
 
                 if( j == 0) {
                     col.style.display = 'none'
+                }
+              //iterate through columns
+              //columns would be accessed using the "col" variable assigned in the for loop
+            }  
+         }
+    }
+    if (lineCheck == true) {
+        table.style.border = '1px solid black';
+        document.getElementById('lineHeader').style.display = 'block'
+        for (var i = 0, row; row = table.rows[i]; i++) {
+            // console.log(row)
+            //iterate through rows
+            //rows would be accessed using the "row" variable assigned in the for loop
+            for (var j = 0, col; col = row.cells[j]; j++) {
+
+                if( j == 0) {
+                    col.style.display = 'block'
                 }
               //iterate through columns
               //columns would be accessed using the "col" variable assigned in the for loop
