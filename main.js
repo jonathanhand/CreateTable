@@ -38,7 +38,7 @@ function createTable(rowData) {
     var tr = document.createElement('tr')
     console.log('row')
     for (let cell in columnArray[rowNum]) {
-      if (cell)
+
       if (cell == 0 || cell == 1 || cell == 2 || cell == 5) {
       var td= document.createElement('td')
       td.appendChild(document.createTextNode(columnArray[rowNum][cell]))
