@@ -1,8 +1,28 @@
+var table = document.getElementById('tableOutput')
+
 document.getElementById('revField').value = ''
 const makeTableBtn = document.getElementById('makeTableBtn').addEventListener('click', function () {
     const revField = document.getElementById('revField');
     const tableField = document.getElementById('tableField');
+
     parseRev(revField.value);
+    const lineCheck = document.getElementById('lineCheck').checked;
+    if (lineCheck == false) {
+        document.getElementById('lineHeader').style.display = 'none'
+        for (var i = 0, row; row = table.rows[i]; i++) {
+            // console.log(row)
+            //iterate through rows
+            //rows would be accessed using the "row" variable assigned in the for loop
+            for (var j = 0, col; col = row.cells[j]; j++) {
+
+                if( j == 0) {
+                    col.style.display = 'none'
+                }
+              //iterate through columns
+              //columns would be accessed using the "col" variable assigned in the for loop
+            }  
+         }
+    }
 });
 
 function createTable(rowData) {
@@ -15,25 +35,12 @@ function createTable(rowData) {
     //let columnTest = rowData[row].match(/([1-9])(\d{3,4})([a-z])(\d{1,3})/im)
     // console.log(columnTest)
     let column = rowData[row].split(/\s\s+/g)
-    //console.log(rowData[row])
     console.log(column)
     column.unshift(column[0][0])
     column[1] = String(column[1].match(/([1-9])(\d{3,4})([a-z])(\d{1,3})/gim))
     columnArray.push(column)
   }
   console.log(columnArray)
-  //TODO: create table
-  // var table = document.createElement('table')
-  var table = document.getElementById('tableOutput')
-  // var trH = document.createElement('tr')
-  // var th = document.createElement('th')
-  // trH.appendChild(document.createTextNode('Line'))
-  // th.appendChild(document.createTextNode('McMaster-Carr Part #'))
-  // th.appendChild(document.createTextNode('Description'))
-  // th.appendChild(document.createTextNode('Price'))
-  // th.appendChild(document.createTextNode('Line'))
-  // trH.appendChild(th)
-  // table.appendChild(trH)
   for (let rowNum in columnArray) {
     var tr = document.createElement('tr')
     console.log('row')
