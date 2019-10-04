@@ -50,18 +50,22 @@ function createTable(rowData) {
 
     console.log(rowData[row])
     //TODO: long part number overflows, causes only 1 space after part
-    //let columnTest = rowData[row].match(/([1-9])(\d{3,4})([a-z])(\d{1,3})/im)
-    // console.log(columnTest)
-    let column = rowData[row].split(/\s\s+/g)
-    console.log(column)
+    let columnTest = rowData[row].split(' ')
+    columnTest[1] = String(columnTest[1]) + '   '
+    let columnWithSpaces = columnTest.join(' ')
+    console.log(columnTest)
+
+    // let column = rowData[row].split(/\s\s+/g)
+    let column = columnWithSpaces.split(/\s\s+/g)
+    // console.log(column)
     column.unshift(column[0][0])
     column[1] = String(column[1].match(/([1-9])(\d{3,4})([a-z])(\d{1,3})/gim))
     columnArray.push(column)
   }
-  console.log(columnArray)
+//   console.log(columnArray)
   for (let rowNum in columnArray) {
     var tr = document.createElement('tr')
-    console.log('row')
+    // console.log('row')
     for (let cell in columnArray[rowNum]) {
       if (cell == 0 || cell == 1 || cell == 2 || cell == 5) {
         console.log(String(columnArray[rowNum][2]).toLowerCase())
