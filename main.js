@@ -38,10 +38,23 @@ function createTable(rowData) {
     var tr = document.createElement('tr')
     console.log('row')
     for (let cell in columnArray[rowNum]) {
-
       if (cell == 0 || cell == 1 || cell == 2 || cell == 5) {
-      var td= document.createElement('td')
+        var td= document.createElement('td')
+        if (cell == 5) {
+          let priceSplit = String(columnArray[rowNum][cell]).split(' ')
+          console.log(priceSplit)
+          if (priceSplit[1] == 'EA') {
+            priceSplit[1] = 'each'
+          }
+          else if (priceSplit[1] == 'PK') {
+            priceSplit[1] = 'per pack of '
+          }
+          columnArray[rowNum][cell] = priceSplit.join(' ')
+                td.appendChild(document.createTextNode('$' + columnArray[rowNum][cell]))
+        }
+        else {
       td.appendChild(document.createTextNode(columnArray[rowNum][cell]))
+        }
       tr.appendChild(td)
     }
     table.appendChild(tr)
