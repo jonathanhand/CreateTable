@@ -1,5 +1,5 @@
 var table = document.getElementById('tableOutput')
-
+const downloadCSV = document.getElementById('downloadCSVBtn').addEventListener('click', download_csv);
 document.getElementById('revField').value = ''
 const makeTableBtn = document.getElementById('makeTableBtn').addEventListener('click', function () {
     const revField = document.getElementById('revField');
@@ -43,6 +43,22 @@ const makeTableBtn = document.getElementById('makeTableBtn').addEventListener('c
     }
 });
 
+var csvArray = []
+function download_csv() {
+  var csv = 'Name,Title\n';
+  csvArray.forEach(function(row) {
+          csv += row.join(',');
+          csv += "\n";
+  });
+
+  console.log(csv);
+  var hiddenElement = document.createElement('a');
+  hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+  hiddenElement.target = '_blank';
+  hiddenElement.download = 'people.csv';
+  hiddenElement.click();
+}
+
 function createTable(rowData) {
   console.log('Table!')
   let columnArray = []
@@ -64,6 +80,7 @@ function createTable(rowData) {
   }
 //   console.log(columnArray)
   for (let rowNum in columnArray) {
+    var csvRow =[]
     var tr = document.createElement('tr')
     // console.log('row')
     for (let cell in columnArray[rowNum]) {
@@ -95,8 +112,14 @@ function createTable(rowData) {
     }
     table.appendChild(tr)
    table.appendChild(tr)
+   csvRow.push(columnArray[rowNum][cell])
     }
+    csvArray.push(csvRow)
+
   }
+  console.log(csvRow)
+  console.log(csvArray)
+
   console.log(table)
   console.log(document.getElementById('wholeTable'))
   // document.getElementById('tableOutput').appendChild(table)
