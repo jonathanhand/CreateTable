@@ -146,5 +146,8 @@ function parseRev (revVal) {
     const pattern = /([1-9])(\d{3,4})([a-z])(\d{1,3})/gim;
     const patternOne = /([1-9])(\d{3,4})([a-z])(\d{1,3})/
     let spaceList = revSpace.split(/\n/g)
+    for (let i in spaceList) {
+      spaceList[i] = spaceList[i].trim();
+    }
     createTable(spaceList)
     }
