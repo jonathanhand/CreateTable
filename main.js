@@ -94,7 +94,7 @@ function createTable(rowData) {
         columnArray[rowNum][2] = columnArray[rowNum][2].join(' ')
         var td= document.createElement('td')
         if (cell == 5) {
-          let priceSplit = String(columnArray[rowNum][cell]).split(' ')
+          let priceSplit = String(columnArray[rowNum][cell]).split(/\s+/g)
           console.log(priceSplit)
           if (priceSplit[1] == 'EA') {
             priceSplit[1] = 'each'
