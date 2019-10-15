@@ -45,22 +45,39 @@ const makeTableBtn = document.getElementById('makeTableBtn').addEventListener('c
 
 var csvArray = []
 function download_csv() {
-  var csv = 'Name,Title\n';
-  csvArray.forEach(function(row) {
-          csv += row.join(',');
-          csv += "\n";
-  });
+  var csv = 'Line,McMaster-Carr Part #, Description, Price\n';
+  let csvContent = "data:text/csv;charset=utf-8," ;
+  // csvArray.forEach(function(row) {
+  //         csv += row.join(',');
+  //         csv += "\n";
+  // });
 
-  console.log(csv);
-  var hiddenElement = document.createElement('a');
-  hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
-  hiddenElement.target = '_blank';
-  hiddenElement.download = 'people.csv';
-  hiddenElement.click();
+  csvArray.forEach(function(rowArray) {
+    let row = rowArray.join(",");
+    csvContent += row + "\r\n";
+});
+var encodedUri = encodeURI(csvContent);
+window.open(encodedUri);
+
+  console.log(csvContent);
+  // var hiddenElement = document.createElement('a');
+  // hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+  // hiddenElement.target = '_blank';
+  // hiddenElement.download = 'table.csv';
+  // hiddenElement.click();
+  //   + csv.map(e => e.join(",")).join("\n");
+  // window.open('data:text/csv;charset=utf-8,' + encodeURI(csvContent));
+
+//   var encodedUri = encodeURI(csv);
+// var link = document.createElement("a");
+// link.setAttribute("href", encodedUri);
+// link.setAttribute("download", "table.csv");
+// document.body.appendChild(link); // Required for FF
+
+// link.click();
 }
 
 function createTable(rowData) {
-  console.log('Table!')
   let columnArray = []
   for (let row in rowData) {
 
@@ -112,16 +129,15 @@ function createTable(rowData) {
     }
     table.appendChild(tr)
    table.appendChild(tr)
-   csvRow.push(columnArray[rowNum][cell])
+   let  noComma = String(columnArray[rowNum][cell]).replace(/,/gim, '')
+   console.log(noComma)
+   csvRow.push(noComma)
     }
     csvArray.push(csvRow)
 
   }
-  console.log(csvRow)
-  console.log(csvArray)
 
   console.log(table)
-  console.log(document.getElementById('wholeTable'))
   // document.getElementById('tableOutput').appendChild(table)
 }
 
