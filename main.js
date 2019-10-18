@@ -120,7 +120,8 @@ function createTable(rowData) {
             priceSplit[1] = 'per pack of '
           }
           columnArray[rowNum][cell] = priceSplit.join(' ')
-                td.appendChild(document.createTextNode('$' + columnArray[rowNum][cell]))
+            columnArray[rowNum][cell] = '$' + columnArray[rowNum][cell]
+                td.appendChild(document.createTextNode(columnArray[rowNum][cell]))
         }
         else {
       td.appendChild(document.createTextNode(columnArray[rowNum][cell]))
