@@ -2,10 +2,6 @@ table, th, td {
   border: 1px solid black;
    border-collapse: collapse;
    font-family: "arial";
-<<<<<<< HEAD
-   font-size: 10pt;
-=======
->>>>>>> dc0e4b0fb484a54965b4ff5f10947c5ec99898cf
 }
 body {
   text-align:center;
@@ -13,3 +9,6 @@ body {
 table {
     padding:10px;
   }
+th {
+  font-size: 10pt;
+}
